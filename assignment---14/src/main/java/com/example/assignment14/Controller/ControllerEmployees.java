@@ -54,10 +54,10 @@ public class ControllerEmployees {
         for (Employees employees1:employees) {
             if (employees1.getId().equalsIgnoreCase(id)){
                 if (employees1.isOnLeave()){
-                    return ResponseEntity.status(200).body(new ApiResponse("Employee is already on leave"));
+                    return ResponseEntity.status(400).body(new ApiResponse("Employee is already on leave"));
                 }
                 if(employees1.getAnnualLeave()<=0){
-                    return ResponseEntity.status(200).body(new ApiResponse("Employee has no leave days left"));
+                    return ResponseEntity.status(400).body(new ApiResponse("Employee has no leave days left"));
                 }
                 employees1.setOnLeave(true);
                 employees1.setAnnualLeave(employees1.getAnnualLeave()-1);
